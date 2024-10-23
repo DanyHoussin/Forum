@@ -7,6 +7,6 @@
 
 <?php
 foreach($topics as $topic ){ ?>
-    <p><a href="http://localhost/Forum/index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> par <?= $topic->getUser() ?></p>
+    <p><a href="http://localhost/Dany_HOUSSIN/Forum/index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> par <a href="#"><?= $topic->getUser() ?></a> le <?= $topic->getCreationDate()->format('d/m/Y à H:i') ?></p>
 <?php }
-var_dump($topics);
+// var_dump($topics);

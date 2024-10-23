@@ -1,5 +1,5 @@
 
-<form action="index.php?action=ajouterActeurTraitement" method="post">
+<form action="" method="post">
     <p>
         <label>
             Nickname :

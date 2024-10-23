@@ -63,6 +63,10 @@ final class Post extends Entity{
     public function getCreationDate(){
         return $this->creationDate;
     }
+    public function setCreationDate($creationDate) {
+        $this->creationDate = new \DateTime($creationDate);
+    }
+
     /**
      * Set the value of user
      *

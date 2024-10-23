@@ -20,8 +20,8 @@ class TopicManager extends Manager{
         $sql = "SELECT * 
                 FROM ".$this->tableName." t 
                 WHERE t.category_id = :id
-                ORDER BY creationDate";
-       
+                ORDER BY creationDate DESC";
+                
         // la requête renvoie plusieurs enregistrements --> getMultipleResults
         return  $this->getMultipleResults(
             DAO::select($sql, ['id' => $id]), 
