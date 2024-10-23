@@ -44,6 +44,41 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
+    public function newTopicInCategory($id) {
+        $topicManager = new TopicManager();
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->findOneById($id);
+        $topics = $topicManager->findTopicsByCategory($id);
+
+        return [
+            "view" => VIEW_DIR."forum/newTopic.php",
+            "meta_description" => "Nouveau topic dans la catégorie : ".$category,
+            "data" => [
+                "category" => $category,
+                "topics" => $topics
+            ]
+        ];
+
+    }
+
+    public function sendNewTopicInCategory($id) {
+        $topicManager = new TopicManager();
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->findOneById($id);
+        $topics = $topicManager->sendTopic($id);
+
+        return [
+            "view" => VIEW_DIR."forum/listTopics.php",
+            "meta_description" => "Nouveau topic dans la catégorie : ".$category,
+            "data" => [
+                "category" => $category,
+                "topics" => $topics
+            ]
+        ];
+
+    }
+
+    
     public function listPostsByTopic($id) {
 
         $postManager = new PostManager();
@@ -75,5 +110,6 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
 
     }
+
 
 }

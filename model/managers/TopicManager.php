@@ -28,4 +28,48 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+
+    public function sendTopic($id) {
+        $pdo = new \PDO('mysql:host=127.0.0.1;port=3306;dbname=forum_dany', 'root', '');
+        if(isset($_POST['submit'])){
+            
+            $title = $_POST['title'];
+            $creationDate = new \DateTime();
+            $category_id = $id;
+            $user_id = 16;
+            
+            $stmt = $pdo->prepare("
+            INSERT INTO topic (title, creationDate, category_id, user_id)
+            VALUES 
+            (:title, :creationDate, :category_id, :user_id)");
+            
+            $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':creationDate', $creationDate->format('Y-m-d H:i'));
+            $stmt->bindParam(':category_id', $category_id);
+            $stmt->bindParam(':user_id',$user_id);
+            
+            $stmt->execute();
+            
+            $messageText = $_POST['messageText'];
+            
+            $stmtt = $pdo->prepare("
+            INSERT INTO post (messageText, creationDate, user_id, topic_id)
+            VALUES 
+            (:messageText, :creationDate, :user_id, :topic_id)");
+
+            $stmtt->bindParam(':messageText', $messageText);
+            $stmtt->bindParam(':creationDate', $creationDate->format('Y-m-d H:i'));
+            $stmtt->bindParam(':user_id', $user_id);
+            $stmtt->bindParam(':topic_id',$topic_id);
+            
+            $last_id = $pdo->lastInsertId();
+            $topic_id = $last_id;
+            
+            $stmtt->execute();
+            
+
+            header("Location: index.php?ctrl=forum&action=listTopicsByCategory&id=$id");
+        }
+
+    }
 }
