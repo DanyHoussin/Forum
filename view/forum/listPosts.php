@@ -11,7 +11,7 @@ foreach($posts as $post ){ ?>
     <?php }
     // var_dump($post);
 ?>
-<form action="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"" method="post">
+<form action="index.php?ctrl=forum&action=sendPostOnTopic&id=<?= $topic->getId() ?>" method="post">
     <p>
         <label>
             <textarea type="text" name="messageText"></textarea>

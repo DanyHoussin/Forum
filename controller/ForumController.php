@@ -61,8 +61,19 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function sendPost($id) {
+    public function sendPostOnTopic($id) {
+        $postManager = new PostManager();
+        $posts = $postManager->sendPost($id);
 
-        
+        return [
+            "view" => VIEW_DIR."forum/listPosts.php",
+            "meta_description" => "Liste des posts dans le topic : ".$topic,
+            "data" => [
+                "posts" => $posts,
+                "topic" => $topic
+            ]
+        ];
+
     }
+
 }

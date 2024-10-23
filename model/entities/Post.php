@@ -39,8 +39,8 @@ final class Post extends Entity{
     /**
      * Get the value of title
      */ 
-    public function getTitle(){
-        return $this->title;
+    public function getMessageText(){
+        return $this->messageText;
     }
 
     /**
@@ -56,27 +56,35 @@ final class Post extends Entity{
     /**
      * Get the value of user
      */ 
-    public function getUser(){
-        return $this->user_id;
-    }
-
+    
     public function getCreationDate(){
         return $this->creationDate;
     }
     public function setCreationDate($creationDate) {
         $this->creationDate = new \DateTime($creationDate);
     }
-
+    
     /**
      * Set the value of user
      *
      * @return  self
      */ 
+    public function getUser(){
+        return $this->user_id;
+    }
     public function setUser($user_id){
         $this->user_id = $user_id;
         return $this;
     }
 
+    public function getTopic(){
+        return $this->topic_id;
+    }
+    public function setTopic($topic_id){
+        $this->topic_id = $topic_id;
+        return $this;
+    }
+    
     public function __toString(){
         return $this->messageText;
     }
