@@ -13,4 +13,17 @@ class UserManager extends Manager{
     public function __construct(){
         parent::connect();
     }
+
+    public function findEmail($email) {
+
+        $sql = "SELECT * 
+                FROM ".$this->tableName."
+                WHERE email = :email";
+                
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return  $this->getMultipleResults(
+            DAO::select($sql, ['email' => $email]), 
+            $this->className
+        );
+    }
 }

@@ -1,15 +1,15 @@
 
-<form action="" method="post">
+<form action="index.php?ctrl=security&action=loginTraitement" method="post">
     <p>
         <label>
-            Nickname :
-            <input type="text" name="nickname" class="form-control" maxlength="255">
+            Email :
+            <input type="text" name="email" class="form-control" maxlength="255">
         </label>
     </p>
     <p>
         <label>
             Password :
-            <input type="text"  name="lastName" class="form-control" maxlength="255">
+            <input type="password"  name="password" class="form-control" maxlength="255">
         </label>
     </p>
     <p>
