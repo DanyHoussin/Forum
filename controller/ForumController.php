@@ -64,17 +64,17 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function sendNewTopicInCategory($id) {
         if(isset($_POST['submit'])){
 
-            $_POST['title'] = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $_POST['messageText'] = filter_input(INPUT_POST, "messageText", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $messageText = filter_input(INPUT_POST, "messageText", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            if($_POST['title'] && $_POST['messageText']){
+            if($title && $messageText){
                 $topicManager = new TopicManager();
                 $categoryManager = new CategoryManager();
                 $category = $categoryManager->findOneById($id);
-                $topic_id = $topicManager->add(['title' => $_POST['title'], 'category_id' => $id, 'user_id' => 16]);
+                $topic_id = $topicManager->add(['title' => $title, 'category_id' => $id, 'user_id' => 16]);
 
                 $postManager = new PostManager();
-                $postManager->add(['messageText' => $_POST['messageText'], 'user_id' => 16, 'topic_id' => $topic_id]);
+                $postManager->add(['messageText' => $messageText, 'user_id' => 16, 'topic_id' => $topic_id]);
 
                 $topics = $topicManager->findTopicsByCategory($id);
 
@@ -111,13 +111,13 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function sendPostOnTopic($id) {
         if(isset($_POST['submit'])){
 
-            $_POST['messageText'] = filter_input(INPUT_POST, "messageText", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $messageText = filter_input(INPUT_POST, "messageText", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            if($_POST['messageText']){
+            if($messageText){
                 $postManager = new PostManager();
                 $topicManager = new TopicManager();
                 $topic = $topicManager->findOneById($id);
-                $postManager->add(['messageText' => $_POST['messageText'], 'user_id' => 16, 'topic_id' => $id]);
+                $postManager->add(['messageText' => $messageText, 'user_id' => 16, 'topic_id' => $id]);
                 $posts = $postManager->findPostsByTopics($id);
 
                 return [
