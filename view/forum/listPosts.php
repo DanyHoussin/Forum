@@ -9,7 +9,7 @@
 foreach($posts as $post ){ ?>
     <p><?= $post ?> par <a href="#"><?= $post->getUser() ?></a> le <?= $post->getCreationDate()->format('d/m/Y à H:i')  ?> </p>
     <?php }
-    // var_dump($post);
+    var_dump($posts);
 ?>
 <form action="index.php?ctrl=forum&action=sendPostOnTopic&id=<?= $topic->getId() ?>" method="post">
     <p>

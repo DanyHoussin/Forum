@@ -9,4 +9,3 @@
 foreach($topics as $topic){ ?>
     <p><a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> par <a href="#"><?= $topic->getUser() ?></a> le <?= $topic->getCreationDate()->format('d/m/Y à H:i') ?></p>
 <?php }
-// var_dump($topics);
