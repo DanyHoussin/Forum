@@ -52,6 +52,7 @@ class SecurityController extends AbstractController{
 
 
     public function loginTraitement () {
+        $userManager = new UserManager();
         if(isset($_POST['submit'])){
 
             $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
@@ -59,13 +60,12 @@ class SecurityController extends AbstractController{
 
             if($email && $password){
 
-                $userManager = new UserManager();
                 $user = $userManager->findEmail($email);
                 var_dump($user);
                 if($user){
-                    $hash = $user["password"];
+                    $hash = $user->getPassword();
                     if(password_verify($password, $hash)){
-                        $_SESSION["user"] = $user; // Stock les informations de User dans la session
+                        $_SESSION["user"] = $user;
                         return [
                             "view" => VIEW_DIR."home.php",
                             "meta_description" => "Page d'accueil du forum"
@@ -80,5 +80,8 @@ class SecurityController extends AbstractController{
             }
         }
     }
-    public function logout () {}
+    public function logout () {
+        unset($_SESSION["user"]);
+        $this->redirectTo("security", "login");
+    }
 }

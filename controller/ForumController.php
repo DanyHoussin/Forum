@@ -71,22 +71,14 @@ class ForumController extends AbstractController implements ControllerInterface{
                 $topicManager = new TopicManager();
                 $categoryManager = new CategoryManager();
                 $category = $categoryManager->findOneById($id);
-                $topic_id = $topicManager->add(['title' => $title, 'category_id' => $id, 'user_id' => 16]);
+                $topic_id = $topicManager->add(['title' => $title, 'category_id' => $id, 'user_id' => $_SESSION["user"]->getId()]);
 
                 $postManager = new PostManager();
-                $postManager->add(['messageText' => $messageText, 'user_id' => 16, 'topic_id' => $topic_id]);
+                $postManager->add(['messageText' => $messageText, 'user_id' => $_SESSION["user"]->getId(), 'topic_id' => $topic_id]);
 
                 $topics = $topicManager->findTopicsByCategory($id);
-
-                return [
-                    "view" => VIEW_DIR."forum/listTopics.php",
-                    "meta_description" => "Nouveau topic dans la catégorie : ".$category,
-                    "data" => [
-                        "category" => $category,
-                        "topics" => $topics,
-                    ]
-                ];
             }
+            $this->redirectTo("forum", "listTopicsByCategory", $id);
         }
     }
 
@@ -117,18 +109,10 @@ class ForumController extends AbstractController implements ControllerInterface{
                 $postManager = new PostManager();
                 $topicManager = new TopicManager();
                 $topic = $topicManager->findOneById($id);
-                $postManager->add(['messageText' => $messageText, 'user_id' => 16, 'topic_id' => $id]);
+                $postManager->add(['messageText' => $messageText, 'user_id' => $_SESSION["user"]->getId(), 'topic_id' => $id]);
                 $posts = $postManager->findPostsByTopics($id);
-
-                return [
-                    "view" => VIEW_DIR."forum/listPosts.php",
-                    "meta_description" => "Liste des posts dans le topic : ".$topic,
-                    "data" => [
-                        "posts" => $posts,
-                        "topic" => $topic
-                    ]
-                ];
             }
+            $this->redirectTo("forum", "listPostsByTopic", $id);
         }
     }
 

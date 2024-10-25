@@ -11,6 +11,9 @@ final class User extends Entity{
 
     private $id;
     private $nickName;
+    private $email;
+    private $password;
+    private $creationDate;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -48,6 +51,14 @@ final class User extends Entity{
     public function setNickName($nickName){
         $this->nickName = $nickName;
 
+        return $this;
+    }
+
+    public function getPassword(){
+        return $this->password;
+    }
+    public function setPassword($password){
+        $this->password = $password;
         return $this;
     }
 

@@ -17,12 +17,12 @@ class UserManager extends Manager{
     public function findEmail($email) {
 
         $sql = "SELECT * 
-                FROM ".$this->tableName."
+                FROM user
                 WHERE email = :email";
                 
         // la requête renvoie plusieurs enregistrements --> getMultipleResults
-        return  $this->getMultipleResults(
-            DAO::select($sql, ['email' => $email]), 
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['email' => $email], false), 
             $this->className
         );
     }
