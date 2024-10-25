@@ -66,16 +66,10 @@ class SecurityController extends AbstractController{
                     $hash = $user->getPassword();
                     if(password_verify($password, $hash)){
                         $_SESSION["user"] = $user;
-                        return [
-                            "view" => VIEW_DIR."home.php",
-                            "meta_description" => "Page d'accueil du forum"
-                        ];
+                        $this->redirectTo("home", "index");
                     }
                 } else {
-                    return[
-                        "view" => VIEW_DIR."security/login.php",
-                        "meta_description" => "Page de connection du forum"
-                    ];
+                    $this->redirectTo("security", "login");
                 }
             }
         }

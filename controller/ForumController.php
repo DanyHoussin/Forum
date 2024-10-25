@@ -116,4 +116,31 @@ class ForumController extends AbstractController implements ControllerInterface{
         }
     }
 
+    public function deletePost($id) {
+        $postManager = new PostManager();
+        $post = $postManager->findOneById($id);
+        $topic_id = $post->getTopic()->getId();
+        if($topic_id){
+            $postManager->delete($id);
+            $this->redirectTo("forum", "listPostsByTopic", $topic_id);
+        }
+
+    }
+
+    public function deleteTopic($id) {
+
+        $topicManager = new TopicManager();
+        $postManager = new PostManager();
+        $posts = $postManager->findPostsByTopics($id);
+        $topic = $topicManager->findOneById($id);
+        $category = $topic->getCategory()->getId();
+        var_dump($posts);
+        // if($category){
+        //     $posts->delete($id);
+        //     $topicManager->delete($id);
+        //     $this->redirectTo("forum", "listTopicsByCategory", $category);
+        // }
+
+
+    }
 }

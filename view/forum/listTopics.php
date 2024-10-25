@@ -7,5 +7,10 @@
 <a href="index.php?ctrl=forum&action=newTopicInCategory&id=<?= $category->getId() ?>">Nouveau Topic</a>
 <?php
 foreach($topics as $topic){ ?>
-    <p><a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> par <a href="#"><?= $topic->getUser() ?></a> le <?= $topic->getCreationDate()->format('d/m/Y à H:i') ?></p>
-<?php }
+    <p>
+        <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> par <a href="#"><?= $topic->getUser() ?></a> le <?= $topic->getCreationDate()->format('d/m/Y à H:i') ?>
+        <?php
+        if(App\Session::getUser() == $topic->getUser()){?>
+            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer</a>
+        <?php } } ?>
+    </p>
