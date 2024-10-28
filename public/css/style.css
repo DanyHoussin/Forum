@@ -1,9 +1,170 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+/* 
+=====================================================
+======================== ALL ========================
+=====================================================
+ */
+
+ @import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin : 0;
+  font-family: "Inria", sans-serif;
 }
 
-h1 {
-    color: rgb(0, 122, 156);
+#wrapper{
+    height: 100vh;
+    background: hsl(0, 0%, 0%);
+    gap: 20px;
+}
+
+p, strong, h1, h2, h3, h4{
+    color: white;
+}
+
+.inria-sans-light {
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .inria-sans-regular {
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .inria-sans-bold {
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .inria-sans-light-italic {
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .inria-sans-regular-italic {
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .inria-sans-bold-italic {
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  
+  #mainpage{
+    height: 100%;
+}
+
+#forum{
+    height: 100%;
+}
+/* 
+=====================================================
+====================== HEADER =======================
+=====================================================
+ */
+
+header{
+    display: flex;
+    top: 0;
+    position: sticky;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    background-color: rgb(19, 19, 19);
+    z-index: 1;
+}
+
+header .navbar{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+}
+
+.clientNavbar{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#navbarphone{
+    display:none;
+}
+
+header a{
+    color: white;
+    transition: 0.5s;
+}
+
+a:link { 
+    text-decoration: none; 
+} 
+a:visited { 
+    text-decoration: none; 
+} 
+header a:hover { 
+    color: hsl(0, 0%, 75%);
+    transition: 0.5s;
+} 
+a:active { 
+    text-decoration: none; 
+}
+
+.logo{
+    width: 50px;
+}
+
+.menuBurger{
+    display: none;
+}
+#navbarphone{
+    display:none;
+}
+
+
+/* 
+=====================================================
+======================= HOME ========================
+=====================================================
+ */
+
+ .home{
+    background-size: cover;
+    background-image: url(../img/fond.jpg);
+    background-position:bottom;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;    
+    overflow:hidden;
+ }
+
+ .home::after, .home::before{
+    content:'';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), black, rgb(0, 75, 196),black );
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 5px;
 }

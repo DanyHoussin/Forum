@@ -19,7 +19,6 @@
                 <header>
                     <nav>
                         <div id="nav-left">
-                            <a href="/">Accueil</a>
                             <?php
                             //if(App\Session::isAdmin()){
                                 ?>
