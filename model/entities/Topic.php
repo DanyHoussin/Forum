@@ -83,6 +83,14 @@ final class Topic extends Entity{
         return $this->creationDate;
     }
 
+    public function setClosed($closed) {
+        $this->closed = $closed;
+    }
+
+    public function getClosed(){
+        return $this->closed;
+    }
+
     public function setCreationDate($creationDate) {
         $this->creationDate = new \DateTime($creationDate);
     }

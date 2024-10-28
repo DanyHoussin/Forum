@@ -1,6 +1,8 @@
 <?php
     $category = $result["data"]['category']; 
     $topics = $result["data"]['topics']; 
+
+if(App\Session::getUser()){
 ?>
 
 <h1>Ajouter un topic</h1>
@@ -21,3 +23,11 @@
         <input type="submit" class="btn btn-success" name="submit" value="Créer le topic">
     </p>
 </form>
+
+<?php
+} else {?>
+
+<p> Oups, vous n'avez pas accès cette page, identifiez-vous d'abord.</p>
+<a href="index.php?ctrl=security&action=login">Se connecter</a>
+<a href="index.php?ctrl=security&action=register">S'inscrire</a>
+<?php } ?>

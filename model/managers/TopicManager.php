@@ -29,4 +29,22 @@ class TopicManager extends Manager{
         );
     }
 
+    public function updateLock($id){
+        $sql = "UPDATE ".$this->tableName."
+                SET closed = 1
+                WHERE id_".$this->tableName." = :id
+                ";
+
+        return DAO::update($sql, ['id' => $id]); 
+    }
+
+    public function updateUnlock($id){
+        $sql = "UPDATE ".$this->tableName."
+                SET closed = 0
+                WHERE id_".$this->tableName." = :id
+                ";
+
+        return DAO::update($sql, ['id' => $id]); 
+    }
+
 }

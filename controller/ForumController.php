@@ -76,7 +76,6 @@ class ForumController extends AbstractController implements ControllerInterface{
                 $postManager = new PostManager();
                 $postManager->add(['messageText' => $messageText, 'user_id' => $_SESSION["user"]->getId(), 'topic_id' => $topic_id]);
 
-                $topics = $topicManager->findTopicsByCategory($id);
             }
             $this->redirectTo("forum", "listTopicsByCategory", $id);
         }
@@ -130,17 +129,35 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function deleteTopic($id) {
 
         $topicManager = new TopicManager();
-        $postManager = new PostManager();
-        $posts = $postManager->findPostsByTopics($id);
         $topic = $topicManager->findOneById($id);
         $category = $topic->getCategory()->getId();
-        var_dump($posts);
-        // if($category){
-        //     $posts->delete($id);
-        //     $topicManager->delete($id);
-        //     $this->redirectTo("forum", "listTopicsByCategory", $category);
-        // }
+        if($category){
+            $topicManager->delete($id); // Supprime tout les posts ayant le même topic_id grace (DELETE on CASCADE)
+            $this->redirectTo("forum", "listTopicsByCategory", $category);
+        }
+    }
 
+    public function lockTopic($id) {
+
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id);
+        $category = $topic->getCategory()->getId();
+        if($category){
+            $topicManager->updateLock($id);
+            $this->redirectTo("forum", "listTopicsByCategory", $category);
+        }
+
+    }
+
+    public function unlockTopic($id) {
+
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id);
+        $category = $topic->getCategory()->getId();
+        if($category){
+            $topicManager->updateUnlock($id);
+            $this->redirectTo("forum", "listTopicsByCategory", $category);
+        }
 
     }
 }

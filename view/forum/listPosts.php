@@ -1,6 +1,8 @@
 <?php
     $topic = $result["data"]['topic']; 
     $posts = $result["data"]['posts']; 
+
+if(App\Session::getUser()){
 ?>
 
 <h1>Liste des posts</h1>
@@ -15,13 +17,26 @@ foreach($posts as $post ){ ?>
         <?php } } ?>
     </p>
 
-<form action="index.php?ctrl=forum&action=sendPostOnTopic&id=<?= $topic->getId() ?>" method="post">
-    <p>
-        <label>
-            <textarea type="text" name="messageText"></textarea>
-        </label>
-    </p>
-    <p>
-        <input type="submit" name="submit" value="Répondre">
-    </p>
-</form>
+<?php 
+if($topic->getClosed() == 0){?>
+    <form action="index.php?ctrl=forum&action=sendPostOnTopic&id=<?= $topic->getId() ?>" method="post">
+        <p>
+            <label>
+                <textarea type="text" name="messageText"></textarea>
+            </label>
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Répondre">
+        </p>
+    </form>
+
+<?php } else { ?>
+    <strong> le sujet est verrouillé, vous ne pouvez pas poster</strong>
+<?php } 
+
+} else {?>
+
+<p> Oups, vous n'avez pas accès cette page, identifiez-vous d'abord.</p>
+<a href="index.php?ctrl=security&action=login">Se connecter</a>
+<a href="index.php?ctrl=security&action=register">S'inscrire</a>
+<?php } ?>
