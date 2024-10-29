@@ -66,11 +66,13 @@ class SecurityController extends AbstractController{
                     $hash = $user->getPassword();
                     if(password_verify($password, $hash)){
                         $_SESSION["user"] = $user;
-                        $this->redirectTo("home", "index");
+                        $this->redirectTo("forum", "index");
                     }
                 } else {
                     $this->redirectTo("security", "login");
                 }
+            } else{
+                $this->redirectTo("security", "login");
             }
         }
     }

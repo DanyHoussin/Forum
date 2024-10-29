@@ -14,8 +14,14 @@
   font-family: "Inria", sans-serif;
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 #wrapper{
-    height: 100vh;
+    height: 100%;
     background: hsl(0, 0%, 0%);
     gap: 20px;
 }
@@ -24,42 +30,83 @@ p, strong, h1, h2, h3, h4{
     color: white;
 }
 
-.inria-sans-light {
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .inria-sans-regular {
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .inria-sans-bold {
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .inria-sans-light-italic {
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .inria-sans-regular-italic {
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .inria-sans-bold-italic {
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
+/* 
+=====================================================
+======================= FONT ========================
+=====================================================
+ */
 
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
   
   #mainpage{
     height: 100%;
@@ -82,25 +129,36 @@ header{
     justify-content:space-around;
     align-items: center;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 15px;
-    background-color: rgb(19, 19, 19);
+    font-size: 16px;
+    background-size: cover;
+    background-image: url(../img/fond.png);
+    background-position:0% 61%;
+    background-repeat: no-repeat;
+    height: 60px;
     z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.61) 0px 19px 38px, rgba(0, 0, 0, 0.445) 0px 15px 12px;
 }
 
-header .navbar{
-    list-style-type: none;
+nav{
     display: flex;
-    flex-direction: row;
-    gap: 60px;
+    justify-content:space-between;
+    padding: 0% 5%;
+    width: 100%;
+    background-image:linear-gradient(0.90turn, black 10%, rgba(255, 255, 255, 0));
+    height: 100%;
 }
 
-.clientNavbar{
+#nav-left{
     list-style-type: none;
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+#nav-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 #navbarphone{
@@ -126,17 +184,97 @@ a:active {
     text-decoration: none; 
 }
 
-.logo{
-    width: 50px;
+.homeBtn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.menuBurger{
-    display: none;
+.homeBtn:hover { 
+    color: hsl(0, 0%, 0%);
+    transition: 0.2s;
+    transform: translate(0px, -3px);
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 2px, rgba(255, 255, 255, 0.3) 0px 4px,rgba(255, 255, 255, 0.2) 0px 6px, rgba(255, 255, 255, 0.1) 0px 8px, rgba(255, 255, 255, 0.05) 0px 10px;
+} 
+
+.homeBtn:active { 
+    transition: 0.2s;
+    transform: translate(0px, 0px);
+    box-shadow: none;
+} 
+
+.account{
+    display: flex;
+    gap: 10px;
 }
-#navbarphone{
+
+.settings{
+    display: flex;
+    position: relative;
+}
+
+#settingsMenu{
     display:none;
+    justify-content: center;
+    position: absolute;
+    top: 200%;
+    right: 0%;
+
+
 }
 
+#settingsMenu ul{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    list-style-type: none;
+    color:black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#settingsMenu li{
+    background-color: rgb(241, 241, 241);
+    padding: 10% 10%;
+    width: 150px;
+    border-bottom: solid;
+    border-color: rgb(73, 73, 73);
+    transition: 0.2s;
+}
+
+#settingsMenu li:hover{
+    transition: 0.2s;
+    background-color: rgb(185, 185, 185);
+}
+
+#settingsMenu a{
+    color:black;
+}
+
+.btnSignUp{
+    margin: 15px 0px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    color: white;
+    background-color: #CA7D28;
+    transition: 0.5s;
+}
+
+.btnSignUp:hover{
+    transition: 0.5s;
+    background-color: #b65e00;
+    transform: translate(0px, -3px);
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
 
 /* 
 =====================================================
@@ -146,7 +284,7 @@ a:active {
 
  .home{
     background-size: cover;
-    background-image: url(../img/fond.jpg);
+    background-image: url(../img/fond.png);
     background-position:bottom;
     background-repeat: no-repeat;
     height: 100%;
@@ -155,16 +293,175 @@ a:active {
     align-items: center;
     position: relative;    
     overflow:hidden;
+    z-index: 0;
  }
 
- .home::after, .home::before{
-    content:'';
-    position: absolute;
+.fond{
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), black, rgb(0, 75, 196),black );
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    padding: 5px;
+    background-image:linear-gradient(0.90turn, black 10%, rgba(255, 255, 255, 0) 50%);
+}
+
+.homeRegister{
+    background-size: cover;
+    background-image: url(../img/fond3.PNG);
+    background-position:bottom;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;    
+    overflow:hidden;
+    z-index: 0;
+ }
+
+.fondRegister{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-image:linear-gradient(0.30turn, rgb(0, 0, 0) 40%, rgba(255, 255, 255, 0) 50%);
+}
+
+.welcome{
+    padding-top: 50px;
+    font-size:x-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/* 
+=====================================================
+====================== LOGIN ========================
+=====================================================
+ */
+
+.login{
+    display: flex;
+    justify-content:right;
+    padding-right: 10%;
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.137);
+    backdrop-filter: blur(3px);
+    width: 400px;
+    height: 450px;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.74) 0px 19px 38px, rgba(0, 0, 0, 0.692) 0px 15px 12px;
+}
+
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputTextLogin{
+    background-color: white;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 8px;
+    width: 250px;
+}
+
+
+.forgotPassword{
+    font-size: small;
+    color: rgba(255, 255, 255, 0.753);
+}
+
+.btnLogin{
+    margin: 15px 0px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    width: 250px;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    color: white;
+    background-color: #CA7D28;
+    transition: 0.5s;
+}
+
+.btnLogin:hover{
+    transition: 0.5s;
+    background-color: #b65e00;
+    transform: translate(0px, -3px);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.signUp{
+    padding-top: 10px;
+    font-size: small;
+}
+
+.signUp a:visited { 
+    color: white;
+} 
+
+/* 
+=====================================================
+===================== REGISTER ======================
+=====================================================
+ */
+
+.register{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    padding-right: 10%;
+    position: relative;
+}
+
+.registerContainer{
+    display: flex;
+    position: absolute;
+    top: 150px;
+    left: 10%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.register form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* 
+=====================================================
+====================== FOOTER =======================
+=====================================================
+ */
+
+ 
+
+footer{
+    display: flex;
+    bottom: 0;
+    position:relative;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    background-color: rgb(8, 8, 8);
+    height: 60px;
+    z-index: 1;
 }

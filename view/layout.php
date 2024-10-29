@@ -6,8 +6,11 @@
         <meta name="description" content="<?= $meta_description ?>">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <title>FORUM</title>
     </head>
     <body>
@@ -22,7 +25,8 @@
                             <?php
                             //if(App\Session::isAdmin()){
                                 ?>
-                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                                <!-- <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a> -->
+                                Logo
                             <?php //} ?>
                         </div>
                         <div id="nav-right">
@@ -30,15 +34,23 @@
                             // si l'utilisateur est connecté 
                             if(App\Session::getUser()){
                                 ?>
-                                <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
-                                <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
-                                <?php
-                            }
-                            else{
+                                <a href="index.php?ctrl=forum&action=index" class="homeBtn"><i class="fa-solid fa-house"></i>Home</a>
+                                <div class="settings">
+                                    <a href="javascript:void(0);" class="icon" onclick="settings()">
+                                        <i><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></i>
+                                    </a>
+                                    <div id="settingsMenu">
+                                        <ul>
+                                            <a href="index.php?ctrl=security&action=profile"><li>Profil</li></a>
+                                            <a href="index.php?ctrl=security&action=logout"><li>Logout</li></a>
+                                        </ul>
+                                    </div>
+                                </div>
+                            <?php
+                            }else{
                                 ?>
-                                <a href="index.php?ctrl=security&action=login">Connexion</a>
-                                <a href="index.php?ctrl=security&action=register">Inscription</a>
+                                <a href="index.php?ctrl=security&action=login">Sign In</a>
+                                <a class="btnSignUp" href="index.php?ctrl=security&action=register">Sign Up</a>
                             <?php
                             }
                         ?>
@@ -88,5 +100,15 @@
             })
         </script>
         <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
+        <script>
+        function settings() {
+          var x = document.getElementById("settingsMenu");
+          if (x.style.display === "flex") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "flex";
+          }
+        }
+    </script>
     </body>
 </html>
