@@ -3,17 +3,18 @@
 
 if(App\Session::getUser()){
 ?>
+<div class="listCategorie">
+    <h1>Liste des catégories</h1>
+    <ul class="categories">
+        <?php
+        foreach($categories as $category ){ ?>
+            <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><li><?= $category->getName() ?></li></a>
+        <?php } ?>
+    </div>
+</div>
+<?php } else { ?>
 
-<h1>Liste des catégories</h1>
-
-<?php
-foreach($categories as $category ){ ?>
-    <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getName() ?></a></p>
-    <?php }
-
-} else {?>
-
-<p> Oups, vous n'avez pas accès cette page, identifiez-vous d'abord.</p>
+<p> Vous n'avez pas accès cette page, identifiez-vous.</p>
 <a href="index.php?ctrl=security&action=login">Se connecter</a>
 <a href="index.php?ctrl=security&action=register">S'inscrire</a>
 <?php } ?>
