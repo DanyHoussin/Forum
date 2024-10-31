@@ -1,10 +1,10 @@
 <div class="home">
     <div class="fond">
         <div class="welcome">
-            <h1 class="roboto-bold">Welcome to the lounge</h1>
-            <p class="roboto-thin-italic">Talk to whoever you want,</p>
-            <p class="roboto-thin-italic">Whenever you want,</p>
-            <p class="roboto-thin-italic">About anything you want.</p>
+        <h1 class="roboto-bold">Bienvenu au lounge</h1>
+                <p class="roboto-thin-italic">Parle à qui tu veux,</p>
+                <p class="roboto-thin-italic">Quand tu veux,</p>
+                <p class="roboto-thin-italic">Sur ce que tu veux.</p>
         </div>
 
         <?php

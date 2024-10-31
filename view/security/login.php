@@ -5,33 +5,33 @@ if(App\Session::getUser()){
     <div class="home">
         <div class="fond">
             <div class="welcome">
-                <h1 class="roboto-bold">Welcome to the lounge</h1>
-                <p class="roboto-thin-italic">Talk to whoever you want,</p>
-                <p class="roboto-thin-italic">Whenever you want,</p>
-                <p class="roboto-thin-italic">About anything you want.</p>
+                <h1 class="roboto-bold">Bienvenu au lounge</h1>
+                <p class="roboto-thin-italic">Parle à qui tu veux,</p>
+                <p class="roboto-thin-italic">Quand tu veux,</p>
+                <p class="roboto-thin-italic">Sur ce que tu veux.</p>
             </div>
             <div class="login">
                 <div class="loginContainer">
-                    <h2>Sign In</h2>
+                    <h2>Se connecter</h2>
                     <form action="index.php?ctrl=security&action=loginTraitement" method="post">
                         <p>
                             <label>
                                 <p>Email</p>
-                                <input type="text" name="email" class="inputTextLogin" maxlength="255" placeholder="Enter your Email">
+                                <input type="text" name="email" class="inputTextLogin" maxlength="255" placeholder="Entre ton email">
                             </label>
                         </p>
                         <p>
                             <label>
-                                <p>Password</p>
-                                <input type="password"  name="password" class="inputTextLogin" maxlength="255" placeholder="Enter your password">
+                                <p>Mot de passe</p>
+                                <input type="password"  name="password" class="inputTextLogin" maxlength="255" placeholder="Entre ton mot de passe">
                             </label>
-                            <a href="#" class="forgotPassword roboto-thin">Forgot password ?</a>
+                            <a href="#" class="forgotPassword roboto-thin">Mot de passe oublié ?</a>
                         </p>
                         <p>
-                            <input type="submit" class="btnLogin roboto-thin" name="submit" value="Login">
+                            <input type="submit" class="btnLogin roboto-thin" name="submit" value="Me connecter">
                         </p>
                     </form>
-                    <p class="signUp">You don't have an account ? <a href="index.php?ctrl=security&action=register">Sign Up</a></p>
+                    <p class="signUp">Tu n'as pas de compte ? <a href="index.php?ctrl=security&action=register">Inscrit toi</a></p>
                 </div>
             </div>
         </div>

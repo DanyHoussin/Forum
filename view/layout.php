@@ -42,19 +42,46 @@
                                     <div id="settingsMenu">
                                         <ul>
                                             <a href="index.php?ctrl=security&action=profile"><li>Profil</li></a>
-                                            <a href="index.php?ctrl=security&action=logout"><li>Logout</li></a>
+                                            <a href="index.php?ctrl=security&action=logout"><li>Se déconnecter</li></a>
                                         </ul>
                                     </div>
                                 </div>
                             <?php
                             }else{
                                 ?>
-                                <a href="index.php?ctrl=security&action=login">Sign In</a>
-                                <a class="btnSignUp" href="index.php?ctrl=security&action=register">Sign Up</a>
+                                <a href="index.php?ctrl=security&action=login">Se connecter</a>
+                                <a class="btnSignUp" href="index.php?ctrl=security&action=register">S'inscrire</a>
                             <?php
                             }
                         ?>
                         </div>
+                        <div class="menuBurger">
+                            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                                <i class="fa-solid fa-bars"></i>
+                            </a>
+                            <div id="navbarphone">
+                                <a href="javascript:void(0);" id="iconClose" onclick="myFunction()">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
+                                <ul>
+                                    <?php
+                                    if(App\Session::getUser()){
+                                    ?>
+                                        <li><a href="index.php?ctrl=forum&action=index" class="homeBtn"><i class="fa-solid fa-house"></i>Home</a></li>
+                                        <li><a href="index.php?ctrl=security&action=profile">Profil</a></li>
+                                        <li><a href="index.php?ctrl=security&action=logout">Se déconnecter</a></li>
+                                    </ul>
+                                    </div>
+                                    <?php
+                                    }else{
+                                        ?>
+                                        <a href="index.php?ctrl=security&action=login"><li>Se connecter</li></a>
+                                        <a class="btnSignUp" href="index.php?ctrl=security&action=register"><li>S'inscrire</li></a>
+                                    <?php
+                                    } ?>
+                                </ul>
+                            </div>
+                         </div>
                     </nav>
                 </header>
                 
@@ -101,12 +128,25 @@
         </script>
         <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
         <script>
-        function settings() {
-          var x = document.getElementById("settingsMenu");
+            function settings() {
+            var x = document.getElementById("settingsMenu");
+            if (x.style.display === "flex") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "flex";
+            }
+            }
+        </script>
+            <script>
+        function myFunction() {
+          var x = document.getElementById("navbarphone");
+          var y = document.getElementById("iconClose");
           if (x.style.display === "flex") {
             x.style.display = "none";
+            y.style.display = "none";
           } else {
             x.style.display = "flex";
+            y.style.display = "block";
           }
         }
     </script>

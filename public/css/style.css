@@ -109,7 +109,6 @@ p, strong, h1, h2, h3, h4{
   }
   
   #mainpage{
-    min-height: 100vh;
     height: 100%;
 }
 
@@ -285,6 +284,13 @@ a:active {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
+.menuBurger{
+    display: none;
+}
+#navbarphone{
+    display:none;
+}
+
 /* 
 =====================================================
 ======================= HOME ========================
@@ -367,7 +373,7 @@ a:active {
     backdrop-filter: blur(3px);
     width: 400px;
     height: 450px;
-    border-radius: 10%;
+    border-radius: 40px;
     box-shadow: rgba(0, 0, 0, 0.74) 0px 19px 38px, rgba(0, 0, 0, 0.692) 0px 15px 12px;
 }
 
@@ -464,15 +470,14 @@ a:active {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding-top: 100px;
-    padding-left: 100px;
+    padding: 100px;
     background-color: #150E07;
 }
 
 .categories{
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 100%;
     border: solid 5px;
     border-color: #484848;
     border-radius: 10px;
@@ -509,8 +514,7 @@ a:active {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding-top: 100px;
-    padding-left: 100px;
+    padding: 100px;
     background-color: #150E07;
 }
 
@@ -538,7 +542,7 @@ a:active {
 .topics{
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 100%;
     border: solid 5px;
     border-color: #484848;
     border-radius: 10px;
@@ -608,6 +612,45 @@ a:active {
 
 /* 
 =====================================================
+===================== NEW TOPIC =====================
+=====================================================
+ */
+
+ .newTopic {
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 100px 100px;
+    background-color: #150E07;
+}
+
+.newTopic form{
+    margin-top: 30px;
+    background-color: #000000;
+    padding: 30px 30px;
+    border: solid 2px;
+    border-radius: 10px;
+}
+
+.newTopic .title{
+    height: 100px;
+}
+
+.newTopic .title input{
+    height: 50px;
+    padding: 10px;
+}
+
+.newTopic textarea{
+    resize: none;
+    height: 200px;
+    padding: 10px;
+}
+
+/* 
+=====================================================
 ======================= POST ========================
 =====================================================
  */
@@ -636,6 +679,10 @@ a:active {
     margin-bottom: 20px;
 }
 
+.topicInfoInPost a{
+    color: white;
+}
+
 .postByUser{
     display: flex;
     height: fit-content;
@@ -645,6 +692,7 @@ a:active {
     border-color: #484848;
     overflow: hidden;
     min-height: 400px;
+    position: relative;
 }
 
 .posts{
@@ -662,6 +710,10 @@ a:active {
     border-right: solid 5px;
     border-color: #484848;
     background-color: #000000;
+}
+
+.user a{
+    color: white;
 }
 
 .messageText{
@@ -699,9 +751,7 @@ a:active {
 .sendPostForm textarea{
     resize: none;
     height: 200px;
-    background-color: #150E07;
     border: none;
-    color: white;
     padding: 20px;
     border-radius: 10px;
 }
@@ -716,6 +766,16 @@ a:active {
 
 .topicLockMessage strong{
     color: rgb(155, 0, 0);
+}
+
+.editPost{
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+}
+
+.editPost a{
+    color:#af1818;
 }
 
 /* 
@@ -738,4 +798,191 @@ footer{
     background-color: rgb(8, 8, 8);
     height: 60px;
     z-index: 1;
+}
+
+ /* 
+=====================================================
+======================= MEDIA =======================
+=====================================================
+ */
+
+
+ @media only screen and (max-width: 1000px) {
+
+    #wrapper{
+        position: relative;
+        overflow:hidden;
+        
+    }
+
+.welcome{
+    font-size: medium;
+}
+
+/* 
+=====================================================
+====================== HEADER =======================
+=====================================================
+ */
+
+ .menuBurger{
+    display: flex;
+    align-items: center;
+}
+
+#iconClose{
+    display: none;
+}
+
+.menuBurger i{
+    font-size: 30px;
+}
+
+#iconClose{
+    position: absolute;
+    right: 30%;
+}
+
+#navbarphone{
+    position: absolute;
+    min-height: 1000vh;
+    width: 100%;
+    top: 0;
+    left: 20%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.589);
+    backdrop-filter: blur(4px);
+    padding: 40px;
+}
+
+#navbarphone ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+    list-style: none;
+}
+
+#nav-right{
+    display: none;
+}
+
+.homeBtn{
+    align-items: center;
+}
+
+.homeBtn i{
+    font-size: 20px;
+}
+
+.btnSignUp{
+    margin:0px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    color: white;
+    background-color: #CA7D28;
+    transition: 0.5s;
+}
+ /* 
+=====================================================
+======================= LOGIN =======================
+=====================================================
+ */
+
+.login{
+    justify-content: center;
+    padding: 0%;
+}
+
+.loginContainer{
+    margin: 50px 20px;
+}
+
+ /* 
+=====================================================
+====================== REGISTER =====================
+=====================================================
+ */
+
+.register{
+    justify-content: center;
+    padding: 0%;
+    position:static;
+    align-items: center;
+}
+
+.registerContainer{
+    padding-top: 150px;
+    position: static;
+}
+
+/* 
+=====================================================
+===================== CATEGORIE =====================
+=====================================================
+ */
+
+ .listCategorie {
+    padding: 100px 30px;
+}
+
+.listCategorie{
+    display: flex;
+    align-items: center;
+}
+
+/* 
+=====================================================
+======================= TOPIC =======================
+=====================================================
+ */
+
+ .listTopic {
+    padding: 100px 30px;
+}
+
+/* 
+=====================================================
+===================== NEW TOPIC =====================
+=====================================================
+ */
+
+ .newTopic {
+    padding: 100px 30px;
+    align-items: center;
+}
+
+.newTopic form {
+width: 100%;
+}
+
+/* 
+=====================================================
+======================= POST ========================
+=====================================================
+ */
+
+ .listPost {
+    padding: 100px 30px;
+}
+
+.postByUser{
+    flex-direction: column;
+    border-top: none;
+    border-bottom: none;
+    border-right: solid 5px;
+    border-left: solid 5px;
+    border-color: #484848;  
+}
+
+.user{
+    border-right: none;
+    border-bottom: solid 5px;
+    border-color: #484848;
+    background-color: #000000;
+}
+
 }

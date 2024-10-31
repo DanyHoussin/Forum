@@ -12,6 +12,9 @@ if(App\Session::getUser()){
         </div>
         <ul class="posts">
             <?php
+             if($posts == NULL){?>
+                <p>Aucun post trouvé.</p>
+            <?php } else {
             foreach($posts as $post ){ ?>
                 <li>
                     <div class="postByUser">
@@ -24,12 +27,12 @@ if(App\Session::getUser()){
                         </div>
                         <?php
                         if(App\Session::getUser() == $post->getUser()){?>
-                        <div class="">
+                        <div class="editPost">
                             <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>"><i class="fa-solid fa-trash"></i></a>
                         <?php }?>
                     </div>
                 </li>
-            <?php } ?>
+            <?php } }?>
         </ul>
             <?php 
             if($topic->getClosed() == 0){?>
