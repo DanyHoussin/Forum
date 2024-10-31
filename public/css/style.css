@@ -291,6 +291,38 @@ a:active {
     display:none;
 }
 
+.restrictPage{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #150E07;
+}
+
+.messageRestrict{
+    height: fit-content;
+    font-size: large;
+    text-wrap:balance;
+    text-align: center;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50%;
+}
+
+.messageRestrict a{
+    color: white;
+}
+
+.messageRestrict div{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: rgba(0, 0, 0, 0.87) 0px 19px 38px, rgba(0, 0, 0, 0.705) 0px 15px 12px;
+}
+
 /* 
 =====================================================
 ======================= HOME ========================

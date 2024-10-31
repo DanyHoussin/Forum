@@ -45,7 +45,13 @@ if(App\Session::getUser()){
 <?php
 } else {?>
 
-<p> Oups, vous n'avez pas accès cette page, identifiez-vous d'abord.</p>
-<a href="index.php?ctrl=security&action=login">Se connecter</a>
-<a href="index.php?ctrl=security&action=register">S'inscrire</a>
+<div class="restrictPage">
+    <div class="messageRestrict">
+        <p>Vous n'avez pas accès cette page, identifiez-vous d'abord.</p>
+        <div>
+            <a href="index.php?ctrl=security&action=login">Se connecter</a>
+            <a href="index.php?ctrl=security&action=register">S'inscrire</a>
+        </div>
+    </div>
+</div>
 <?php } ?>
